@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- The viewport setting makes the layout fit phones as well as desktops. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An unofficial HTML and CSS recreation of the MUST application portal.">
+  <title>Sign In | MUST Application Portal Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+  <a class="skip-link" href="#main-content">Skip to sign in</a>
+  <!-- SVG symbols draw the icons locally, without an icon font or JavaScript. -->
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7" fill="none" stroke="white" stroke-width="1.4"/></symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24"><path d="M5 10h14v11H5z"/><path d="M8 10V6a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+      <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Zm11-5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="icon-signin" viewBox="0 0 24 24"><path d="M14 2h8v20h-8v-4h4V6h-4ZM9 5l8 7-8 7v-5H1v-4h8Z"/></symbol>
+      <symbol id="icon-key" viewBox="0 0 24 24"><path d="M15 1a8 8 0 0 0-7 12L0 21v3h5v-3h3v-3h3l2-2A8 8 0 1 0 15 1Zm2 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/></symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24"><circle cx="8" cy="6" r="4"/><path d="M0 21v-3a8 8 0 0 1 16 0v3Zm19-15h2v4h4v2h-4v4h-2v-4h-4v-2h4Z"/></symbol>
+      <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M9 8a3 3 0 1 1 5 2c-2 1-2 2-2 4" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="18" r="1" fill="white"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="portal-wrap">
+    <!-- Local copy of the official logo: works offline.
+         Source: https://applications.must.ac.ug/dist/img/campus_logo.png -->
+    <header class="portal-header">
+      <img class="portal-logo" src="assets/must-logo.jpg" alt="Mbarara University of Science and Technology crest" width="78" height="78">
+      <p class="university-name">Mbarara University of Science and Technology</p>
+      <p class="portal-pill">Online Application Portal</p>
+    </header>
+
+    <main class="login-card" id="main-content">
+      <h1 id="login-title">Welcome Back</h1>
+      <p class="subtitle">Log in to access your application dashboard</p>
+
+      <!-- Demo only: buttons have type="button", and fields omit name attributes.
+           There is no submit button, server connection, or credential storage. -->
+      <form class="login-form" aria-labelledby="login-title" aria-describedby="demo-note">
+          <div class="field-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <span class="input-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg></span>
+              <input id="email" type="email" placeholder="name@example.com" autocomplete="email" required>
+            </div>
+          </div>
+        <div class="field-group">
+          <label for="password">Password</label>
+          <div class="input-group">
+            <span class="input-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg></span>
+            <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+            <!-- The eye is decorative: password visibility needs JavaScript. -->
+            <span class="password-eye" title="Password remains hidden in this demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye"></use></svg></span>
+          </div>
+        </div>
+        <button class="button sign-in-button" type="button" aria-describedby="demo-note"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-signin"></use></svg> Sign In</button>
+      </form>
+
+      <!-- Recovery and help are visual controls; the account link works locally. -->
+      <button class="forgot-link" type="button" aria-describedby="demo-note" title="Password recovery is not available in this demo">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-key"></use></svg> Forgot your password?
+      </button>
+      <div class="divider"><span>New to the portal?</span></div>
+      <div class="login-actions">
+        <a class="button outline-primary" href="register.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg> Create Account</a>
+        <button class="button outline-secondary" type="button" aria-describedby="demo-note" title="Application help is not available in this demo"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-help"></use></svg> How to Apply</button>
+      </div>
+    </main>
+    <p class="demo-note" id="demo-note">Unofficial demo · Forms and help controls are display-only.<br>No details are sent or stored by these pages.</p>
+  </div>
+</body>
+</html>
