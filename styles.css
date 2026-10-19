@@ -1,0 +1,220 @@
+/* Shared colors and system fonts: no framework, web font, or network request. */
+:root {
+  color-scheme: light;
+  --text: #111827;
+  --muted: #64748b;
+  --border: #e1e3e7;
+  --blue: #007bff;
+  --purple: #3331b5;
+}
+
+/* Include padding in widths so cards and inputs fit small screens. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background:
+    radial-gradient(ellipse at 50% 0%, #e1e3ff 0%, transparent 65%),
+    linear-gradient(#f1f3ff, #f7f9ff);
+}
+button, input, select { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+
+/* Keyboard focus is visible on both fields and navigation links. */
+:focus-visible { outline: 3px solid #7471e6; outline-offset: 3px; }
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  z-index: 5;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+}
+.skip-link:focus { top: 8px; }
+
+/* SVG symbols are defined once per page and reused by the small visible icons. */
+.icon-library { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon { width: 17px; height: 17px; flex: 0 0 17px; fill: currentColor; }
+
+/* Login header: centered crest, uppercase university name, and purple pill. */
+.login-page { padding: 40px 16px 24px; }
+.portal-wrap { width: 100%; max-width: 520px; margin: 0 auto; }
+.portal-header { margin-bottom: 18px; text-align: center; }
+.portal-logo {
+  display: block;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto;
+  padding: 8px;
+  object-fit: contain;
+  border: 1px solid #eeeff4;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 12px 30px rgb(15 23 42 / 10%);
+}
+.university-name {
+  margin: 12px 0 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.portal-pill {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 8px 14px;
+  border: 1px solid #c5c5ff;
+  border-radius: 999px;
+  background: #dcdcff;
+  color: #3026e9;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* White cards use rounded corners and soft shadows like the reference images. */
+.login-card, .registration-card {
+  background: white;
+  border: 1px solid rgb(15 23 42 / 6%);
+  border-radius: 16px;
+  box-shadow: 0 18px 55px rgb(15 23 42 / 10%);
+}
+.login-card { padding: 22px 22px 18px; }
+h1 { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.5; }
+.subtitle { margin: 2px 0 18px; color: var(--muted); font-size: 13px; }
+.login-form { display: grid; gap: 16px; }
+.field-group { min-width: 0; }
+label { display: block; margin-bottom: 6px; font-size: 16px; font-weight: 600; }
+
+/* A flex row joins the icon, input, and optional eye into one bordered control. */
+.input-group {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+}
+.input-group:focus-within { border-color: #8e8cf2; box-shadow: 0 0 0 3px rgb(98 104 255 / 12%); }
+.input-icon, .password-eye {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 43px;
+  color: var(--muted);
+}
+.input-icon { border-right: 1px solid var(--border); }
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 12px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+input::placeholder { color: #9aa0a8; opacity: 1; }
+/* The group already shows a focus outline, so the input needs no second ring. */
+input:focus-visible { outline: none; }
+.password-eye { flex-basis: 42px; }
+
+/* Shared button sizing; the sign-in action has the screenshot's purple gradient. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: white;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.sign-in-button {
+  width: 100%;
+  height: 46px;
+  margin-top: 8px;
+  border: 0;
+  color: white;
+  background: linear-gradient(90deg, #332fba, #3b3dbf 45%, #2c299c);
+  box-shadow: 0 14px 30px rgb(47 47 180 / 25%);
+  letter-spacing: 0.2px;
+}
+.sign-in-button:hover { filter: brightness(0.95); }
+.forgot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  line-height: 24px;
+  text-align: left;
+}
+.forgot-link:hover { text-decoration: underline; }
+.divider { display: flex; align-items: center; gap: 8px; margin: 18px 0 14px; color: #94a3b8; font-weight: 700; text-align: center; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.divider span { flex-shrink: 0; }
+.login-actions { display: flex; gap: 10px; }
+.login-actions .button { font-size: 13px; white-space: nowrap; }
+.login-actions .icon { width: 14px; height: 14px; flex-basis: 14px; }
+.login-actions .outline-primary { flex: 1; }
+.outline-primary { color: var(--blue); border-color: var(--blue); }
+.outline-secondary { color: #6c757d; border-color: #6c757d; }
+.outline-primary:hover { background: #f0f7ff; }
+.outline-secondary:hover { background: #f4f5f6; }
+
+/* Account creation remains a standalone page. The gray background recreates
+   the dimmed backdrop, without an overlay that could trap keyboard focus. */
+.registration-page { padding: 28px 12px 16px; background: #999aa5; }
+.registration-shell { width: 100%; max-width: 500px; margin: 0 auto; }
+.registration-card { overflow: hidden; box-shadow: 0 22px 70px rgb(15 23 42 / 18%); }
+.modal-header { display: flex; align-items: flex-start; gap: 12px; padding: 16px 18px; border-bottom: 1px solid #f0f0f2; }
+.modal-header > div { flex: 1; min-width: 0; }
+.modal-header h1 { font-size: 16px; }
+.modal-header .subtitle { margin: 4px 0 0; font-size: 12px; }
+.close-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 34px; height: 34px; margin-top: -2px; border-radius: 10px; background: #f0f1f3; color: black; font-size: 24px; font-weight: 700; line-height: 1; }
+.close-icon:hover { background: #e2e4e9; }
+.modal-body { padding: 18px; }
+.modal-body .field-group + .field-group { margin-top: 16px; }
+.modal-body label { margin-bottom: 4px; }
+.phone-row { display: grid; grid-template-columns: 147px minmax(0, 1fr); gap: 10px; }
+select { width: 100%; min-width: 0; height: 38px; padding: 6px 8px; border: 1px solid #ced4da; border-radius: 3px; color: #495057; background: white; }
+.field-help { margin: 12px 0 0; color: var(--muted); font-size: 12px; }
+.email-help { display: flex; align-items: center; justify-content: flex-end; gap: 4px; width: 100%; margin-top: 8px; padding: 0; border: 0; color: var(--blue); background: transparent; text-align: right; font-style: italic; }
+.email-help:hover { text-decoration: underline; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 18px 20px; border-top: 1px solid #f0f0f2; }
+.create-button { color: white; background: var(--blue); border-color: var(--blue); }
+.create-button:hover { background: #0069d9; }
+.create-button .icon { width: 20px; height: 20px; flex-basis: 20px; }
+.demo-note { margin: 16px 0 0; color: #68758c; font-size: 11px; line-height: 1.6; text-align: center; }
+.registration-page .demo-note { color: #202536; }
+
+/* Stack the country selector on narrow phones; allow scrolling instead of
+   fixing the card height, so every control remains reachable at large zoom. */
+@media (max-width: 420px) {
+  .login-page { padding: 24px 12px; }
+  .university-name { font-size: 19px; }
+  .login-card { padding: 20px 16px 18px; }
+  .login-actions { gap: 8px; }
+  .login-actions .button { padding: 10px 8px; font-size: 12px; }
+  .registration-page { padding-top: 16px; }
+  .phone-row { grid-template-columns: 1fr; gap: 8px; }
+  .modal-header, .modal-body { padding: 16px; }
+  .modal-footer { padding: 16px; }
+  .email-help { font-size: 14px; }
+}
